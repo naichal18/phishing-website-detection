@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap");
+
+/* =========================================================
+   PHISHGUARD — THEME SYSTEM
+   ========================================================= */
+
+:root {
+  /* ================= DARK THEME DEFAULT ================= */
+
+  --background: #0a0a0f;
+  --foreground: #e0e0e0;
+
+  --card: #12121a;
+  --muted: #1c1c2e;
+  --muted-foreground: #858b99;
+
+  --accent: #00ff88;
+  --accent-secondary: #ff00ff;
+  --accent-tertiary: #00d4ff;
+
+  --border: #2a2a3a;
+  --input: #12121a;
+  --ring: #00ff88;
+
+  --destructive: #ff3366;
+
+  --grid-color: rgba(0, 255, 136, 0.055);
+
+  --panel-background: rgba(18, 18, 26, 0.88);
+  --panel-background-solid: #12121a;
+
+  --header-background: rgba(10, 10, 15, 0.72);
+
+  --text-primary: #e0e0e0;
+  --text-secondary: #858b99;
+  --text-muted: #5d6270;
+
+  --input-text: #e0e0e0;
+  --input-placeholder: #59606d;
+
+  --button-text: #06100b;
+
+  --neon-sm:
+    0 0 3px #00ff88,
+    0 0 6px #00ff884d;
+
+  --neon:
+    0 0 5px #00ff88,
+    0 0 10px #00ff8840;
+
+  --neon-lg:
+    0 0 10px #00ff88,
+    0 0 20px #00ff8860,
+    0 0 40px #00ff8830;
+
+  --neon-magenta:
+    0 0 5px #ff00ff,
+    0 0 20px #ff00ff60;
+
+  --neon-cyan:
+    0 0 5px #00d4ff,
+    0 0 20px #00d4ff60;
+
+  --transition-theme:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+
+html[data-theme="light"] {
+  --background: #eef1f0;
+  --foreground: #11151a;
+
+  --card: #f8faf9;
+  --muted: #e4e9e7;
+  --muted-foreground: #59636b;
+
+  --accent: #00a968;
+  --accent-secondary: #c000c0;
+  --accent-tertiary: #008fb3;
+
+  --border: #b8c3c0;
+  --input: #f8faf9;
+  --ring: #00a968;
+
+  --destructive: #d91f4d;
+
+  --grid-color: rgba(0, 80, 60, 0.075);
+
+  --panel-background: rgba(248, 250, 249, 0.92);
+  --panel-background-solid: #f8faf9;
+
+  --header-background: rgba(238, 241, 240, 0.88);
+
+  --text-primary: #11151a;
+  --text-secondary: #59636b;
+  --text-muted: #727c83;
+
+  --input-text: #11151a;
+  --input-placeholder: #7b858c;
+
+  --button-text: #ffffff;
+
+  --neon-sm:
+    0 0 3px rgba(0, 169, 104, 0.35),
+    0 0 6px rgba(0, 169, 104, 0.15);
+
+  --neon:
+    0 0 5px rgba(0, 169, 104, 0.35),
+    0 0 10px rgba(0, 169, 104, 0.15);
+
+  --neon-lg:
+    0 0 10px rgba(0, 169, 104, 0.35),
+    0 0 20px rgba(0, 169, 104, 0.18),
+    0 0 40px rgba(0, 169, 104, 0.08);
+
+  --neon-magenta:
+    0 0 5px rgba(192, 0, 192, 0.3),
+    0 0 20px rgba(192, 0, 192, 0.12);
+
+  --neon-cyan:
+    0 0 5px rgba(0, 143, 179, 0.3),
+    0 0 20px rgba(0, 143, 179, 0.12);
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: var(--background);
+
+  transition:
+    background-color 0.3s ease;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background: var(--background);
+  color: var(--foreground);
+
+  font-family:
+    "Rajdhani",
+    "Segoe UI",
+    sans-serif;
+
+  font-weight: 500;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  color: var(--button-text);
+  background: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+  box-shadow: var(--neon);
+}
+
+
+/* =========================================================
+   THEME TOGGLE
+   ========================================================= */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-width: 82px;
+  height: 30px;
+
+  padding: 0 11px;
+
+  border: 1px solid var(--border);
+  border-radius: 2px;
+
+  background: var(--card);
+  color: var(--text-primary);
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--neon-sm);
+}
+
+.theme-toggle:active {
+  transform: translateY(1px);
+}
+
+.theme-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13px;
+  line-height: 1;
+}
+
+.theme-text {
+  line-height: 1;
+}
+
+
+/* =========================================================
+   THEME TRANSITION
+   ========================================================= */
+
+.cyber-app,
+.cyber-panel,
+.hero-hud,
+.analyzer-panel,
+.result-panel,
+.error-panel,
+.feature-card,
+.terminal-panel,
+.input-command,
+.theme-toggle,
+.topbar {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
