@@ -4,37 +4,24 @@ from pydantic import BaseModel, Field
 
 from .model import predict_url
 
-
-# ============================================================
-# FastAPI Application
-# ============================================================
-
 app = FastAPI(
     title="Phishing Website Detection API",
     description="ML API for detecting potentially phishing URLs.",
     version="1.0.0"
 )
 
-
-# ============================================================
-# CORS Configuration
-# ============================================================
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+        "https://phishing-website-detection-gules.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-
-# ============================================================
-# Request Schema
-# ============================================================
 
 class URLRequest(BaseModel):
     url: str = Field(
@@ -44,10 +31,6 @@ class URLRequest(BaseModel):
     )
 
 
-# ============================================================
-# Health Check
-# ============================================================
-
 @app.get("/")
 def root():
     return {
@@ -56,10 +39,6 @@ def root():
         "version": "1.0.0"
     }
 
-
-# ============================================================
-# Prediction Endpoint
-# ============================================================
 
 @app.post("/predict")
 def predict(request: URLRequest):
